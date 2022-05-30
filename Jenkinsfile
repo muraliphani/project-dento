@@ -9,5 +9,10 @@ sh "ls -l"
   stage("Maven Build"){
   sh "mvn install"
   }  
-
+  stage("Upload to nexus"){
+  nexusArtifactUploader artifacts: [[artifactId: '$BUILD_ID', classifier: '', file: 'target/devtest1.war', type: 'war']], 
+    credentialsId: 'nexusrepologin', groupId: 'prod', nexusUrl: '54.245.64.15:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devtest1', version: '$BUILD_ID'
+  
+  }
+  
 }
