@@ -11,7 +11,7 @@ sh "ls -l"
   }  
   stage("Upload to nexus"){
   nexusArtifactUploader artifacts: [[artifactId: '$BUILD_ID', classifier: '', file: 'target/devtest1.war', type: 'war']], 
-    credentialsId: 'nexusrepologin', groupId: 'prod', nexusUrl: '54.245.64.15:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devtest1', version: '$BUILD_ID'
+    credentialsId: 'nexusrepologin', groupId: 'prod', nexusUrl: '34.221.193.230:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devtest1', version: '$BUILD_ID'
   
   }
   
