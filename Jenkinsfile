@@ -17,10 +17,10 @@ sh "ls -l"
   //}
   
   stage('SonarQube analysis') {
-        steps{
+        
         withSonarQubeEnv('sonarqube-8.9') { 
         sh "mvn sonar:sonar"
-    }
+    
         }
         }
   stage("Deploy to tomcat"){
