@@ -16,12 +16,12 @@ sh "ls -l"
   
   //}
   
-  stage('SonarQube analysis') {
-       def scannerHome = tool 'SonarScanner 4.7.0'; 
-       withSonarQubeEnv('sonarqube-9.4') { 
-        sh "${scannerHome}/bin/sonar-scanner"
-        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=devtest1"
-    }
+  //stage('SonarQube analysis') {
+       
+  //     withSonarQubeEnv() { 
+        
+  //      sh "mvn clean verify sonar:sonar -Dsonar.projectKey=devtest1"
+  //  }
         }
   stage("Deploy to tomcat"){
   sshagent(['tomcat']) {
