@@ -18,7 +18,7 @@ sh "ls -l"
   
   stage('SonarQube analysis') {
         
-        withSonarQubeEnv('sonarqube-8.9') { 
+        withSonarQubeEnv('sonarqube-9.4') { 
         sh "mvn sonar:sonar"
     
         }
