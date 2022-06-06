@@ -18,14 +18,9 @@ sh "ls -l"
   
   stage('SonarQube analysis') {
         
-        withSonarQubeEnv('sonarqube-9.4') { 
-        //sh "mvn sonar:sonar"
-          sh" mvn clean verify sonar:sonar \
-  -Dsonar.projectKey=devtest1 \
-  -Dsonar.host.url=http://34.219.82.110:9000 \
-  -Dsonar.login=706ea60af70f3178c6894d4d0f26fdf55be9b9fe"
-    
-        }
+       withSonarQubeEnv('sonarqube-9.4') { 
+        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=devtest1"
+    }
         }
   stage("Deploy to tomcat"){
   sshagent(['tomcat']) {
