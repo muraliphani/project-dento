@@ -15,6 +15,14 @@ sh "ls -l"
   //credentialsId: 'nexusrepologin', groupId: 'prod', nexusUrl: '34.221.193.230:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'devtest1', version: '$BUILD_ID'
   
   //}
+  
+  stage('SonarQube analysis') {
+        steps{
+        withSonarQubeEnv('sonarqube-8.9') { 
+        sh "mvn sonar:sonar"
+    }
+        }
+        }
   stage("Deploy to tomcat"){
   sshagent(['tomcat']) {
     sh "scp -o StrictHostKeyChecking=no target/devtest1.war ec2-user@34.222.223.93:/home/ec2-user/apache-tomcat-9.0.63/webapps"
